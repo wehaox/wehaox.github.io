@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>我的世界开服进阶教程</title>
+      <link href="2020/10/24/%E5%BC%80%E6%9C%8D%E8%BF%9B%E9%98%B6/"/>
+      <url>2020/10/24/%E5%BC%80%E6%9C%8D%E8%BF%9B%E9%98%B6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>作为一个Minecraft腐竹，既要保证服务器的稳定运行也要让服务器看起来有排面<br>本次的进阶教程包括<br>配置文件的优化<br>外观上的美感(进服方式和motd)<br>  &emsp;&emsp;服务器图标<br>  &emsp;&emsp;使用域名进服<br>  &emsp;&emsp;个性化motd<br>本教程需要有一定的开服经验</p><hr><h1 id="服务器优化"><a href="#服务器优化" class="headerlink" title="服务器优化"></a>服务器优化</h1><p>   关于服务器优化并不能大幅改善服务器的TPS(服务器流畅度)</p><p>关于TPS<br>&emsp;&emsp;&emsp;&emsp; paper端可以输入指令/tps查看<br>&emsp;&emsp;&emsp;&emsp; 20.0 =完美无瑕 - 漂亮。<br>&emsp;&emsp;&emsp;&emsp; 19.95-19.99 =很棒 - 不明显的TPS损失。 大多数服务器都在这里。<br>&emsp;&emsp;&emsp;&emsp; 18.5-19.94 = 一般 - 也许是一些轻微的问题，但没有任何游戏影响。<br>&emsp;&emsp;&emsp;&emsp; 17.0-18.4 =差 - 需要认真修复。<br>&emsp;&emsp;&emsp;&emsp; &lt; 17.0 = 无法正常游戏……</p><p>想要真正开一个大型服务器需要大量金钱、时间、精力的投入<br>即使是朋友之间联机也需要一定的配置<br>最低配置1H2G1M(大概3-5人)；<br>推荐配置2H4G5M(10几个朋友一起玩没啥问题)</p><hr><h2 id="启动参数的选择"><a href="#启动参数的选择" class="headerlink" title="启动参数的选择"></a>启动参数的选择</h2><p>   (启动服务端的文件，例如:start.bat/start.sh)<br>&emsp;&emsp;&emsp;&emsp;-Xmx6G  最大内存<br>&emsp;&emsp;&emsp;&emsp;-Xms6G  设置JVM初始堆内存为6G。此值可以设置与-Xmx相同，以避免每次垃圾回收完成后JVM重新分配内存<br>&emsp;&emsp;&emsp;&emsp;-XX:+AggressiveOpts   尽可能的使用更多对性能有帮助的优化功能<br>&emsp;&emsp;&emsp;&emsp;-XX:+UseCompressedOops指针压缩，可以减少一定的内存占用（64位才支持）<br>&emsp;&emsp;&emsp;&emsp;nogui   无图形化界面，有桌面环境的系统可以减少内存占用</p><p>例如启动脚本可以这样写：<br> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xms6G -Xmx6G  -XX:+AggressiveOpts -XX:+UseCompressedOops  -jar xxxx.jar nogui</span><br></pre></td></tr></table></figure></p><p>xxxx.jar指的是你的服务端核心</p><p>此优化对服务器的并无太大用处 图个心理安慰</p><hr><h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>根据服务器端所提供的配置文件进行优化<br>并不是所有服务端都有这些配置文件<br>需要自行判断</p><h3 id="server-properties-所有服务端都有"><a href="#server-properties-所有服务端都有" class="headerlink" title="server.properties (所有服务端都有)"></a>server.properties (所有服务端都有)</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">view-distance=10</span>  </span><br><span class="line"><span class="string">视距</span> <span class="string">默认值是10</span> <span class="string">在游戏中你所能看见的最大距离</span></span><br><span class="line"><span class="string">越大对服务器压力越大，建议在4-6，太小影响游戏体验</span></span><br><span class="line">    </span><br><span class="line"><span class="string">generate-structures=true</span> <span class="string">默认值是true</span> </span><br><span class="line"><span class="string">生成和计算一些特殊的环境，例如女巫塔、村民到达数量生成铁傀儡等等</span></span><br><span class="line"><span class="string">关闭之后将不再生成这些环境</span></span><br><span class="line"><span class="string">需要彻底关闭这个参数，还需要在spigot.yml中把save-structure-info设置为false</span></span><br></pre></td></tr></table></figure><h3 id="bukkit-yml-水桶服或者衍生版就有"><a href="#bukkit-yml-水桶服或者衍生版就有" class="headerlink" title="bukkit.yml (水桶服或者衍生版就有)"></a>bukkit.yml (水桶服或者衍生版就有)</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">spawn-limits</span></span><br><span class="line"><span class="string">默认值:</span> <span class="string">monsters:70,</span> <span class="string">animals:15,</span> <span class="string">water-animals:5,</span> <span class="string">ambient:15</span></span><br><span class="line"><span class="string">推荐值:</span> <span class="string">monsters:50,</span> <span class="string">animals:12,</span> <span class="string">water-animals:5,</span> <span class="string">ambient:3</span></span><br><span class="line"><span class="string">例如monsters:</span> <span class="number">70</span><span class="string">，在线人数只有10个人，则最多只能生成700个怪物实体（僵尸、骷髅、蜘蛛等等），适当的设置这些参数可以减少实体对性能的影响。</span></span><br><span class="line">    </span><br><span class="line"><span class="string">chunk-gc</span></span><br><span class="line"><span class="string">默认值:</span> <span class="string">period-in-ticks:600,</span> <span class="string">load-threshold:0</span> <span class="string">(关闭)</span></span><br><span class="line"><span class="string">推荐值:</span> <span class="string">period-in-ticks:400,</span> <span class="string">load-threshold:300</span>   </span><br><span class="line"><span class="string">period-in-ticks</span>   <span class="string">设置为300~400</span>  </span><br><span class="line"><span class="string">load-threshold</span>  <span class="string">设置为300~600</span>   <span class="string">比较合适。</span></span><br><span class="line">    </span><br><span class="line"><span class="attr">ticks-per:</span></span><br><span class="line"><span class="string">monster-spawns</span></span><br><span class="line"><span class="string">生成怪物的时间，可以设置成2</span> <span class="string">对服务器影响不大</span></span><br></pre></td></tr></table></figure><h3 id="paper-yml-PaperSpigot才有"><a href="#paper-yml-PaperSpigot才有" class="headerlink" title="paper.yml (PaperSpigot才有)"></a>paper.yml (PaperSpigot才有)</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">optimize-explosions</span></span><br><span class="line"><span class="string">推荐值:</span> <span class="literal">true</span></span><br><span class="line"> </span><br><span class="line"><span class="string">despawn-ranges</span></span><br><span class="line"><span class="string">推荐值:</span> <span class="attr">soft:</span> <span class="number">28</span><span class="string">,</span> <span class="attr">hard:</span> <span class="number">96</span></span><br><span class="line"><span class="string">注释:</span> <span class="string">使用较低的数值，可以更快的清除无用的怪物，并允许在玩家流量多的区域产生更多的怪物</span></span><br><span class="line"> </span><br><span class="line"><span class="string">grass-spread-tick-rate</span></span><br><span class="line"><span class="string">推荐值:</span> <span class="number">2</span><span class="number">-3</span> <span class="string">空岛服不用改</span></span><br><span class="line"> </span><br><span class="line"><span class="string">spigot.yml</span> <span class="string">(spigot或者衍生版就有)</span></span><br><span class="line"> </span><br><span class="line"><span class="string">view-distance</span></span><br><span class="line"> </span><br><span class="line"><span class="string">user-cache-size</span></span><br><span class="line"><span class="string">其控制用户缓存的大小，如果你的服务器玩家很多，可以设置的更大一些，例如5000</span></span><br><span class="line"> </span><br><span class="line"><span class="string">chunks-per-tick</span></span><br><span class="line"><span class="string">默认值是650，可以设置成350来提高性能。极端的情况可以设置成150，但是会使得作物生长的速度明显变慢。</span></span><br><span class="line"> </span><br><span class="line"><span class="string">entity-activation-range</span></span><br><span class="line"><span class="string">减少这个数值可以明显提升性能，但是设置得过小会使得游戏难度大幅降低。一般可以把monsters设置为24，animals设置为12</span></span><br><span class="line"> </span><br><span class="line"><span class="string">max-entity-collisions</span></span><br><span class="line"><span class="string">实体碰撞箱的阀值。建议设置为2，可以减少密集卡服的问题。</span></span><br><span class="line"> </span><br><span class="line"><span class="string">arrow-despawn-rate</span></span><br><span class="line"><span class="string">设置箭头射出后的消失时间（以毫秒为单位），建议值100-600</span></span><br></pre></td></tr></table></figure><p>  优化参考:<a href="https://www.mcbbs.net/forum.php?mod=viewthread&amp;tid=774469">https://www.mcbbs.net/forum.php?mod=viewthread&amp;tid=774469</a></p><hr><h1 id="服务器图标"><a href="#服务器图标" class="headerlink" title="服务器图标"></a>服务器图标</h1><p>服务器根目录放一个名为<strong>server-icon.png</strong>的文件<br>图片尺寸为1:1例如64x64</p><hr><h1 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h1><p>假设<br>你的域名为：baidu.com<br>你的ip为0.0.0.0</p><p>使用srv解析<br>主机记录：_minecraft._tcp.xx<br>记录值：5 0 25565  0.0.0.0</p><p>其中.xx为二级域名 例如设置为.mc 服务器地址就是mc.baidu.com<br>25565为你的端口<br>0.0.0.0是你服务器的ip地址或者一个域名</p><hr><h1 id="个性化"><a href="#个性化" class="headerlink" title="个性化"></a>个性化</h1><p>用到的网站：<br>让你的motd有颜色：<br><a href="https://minecraft-zh.gamepedia.com/%E6%A0%B7%E5%BC%8F%E4%BB%A3%E7%A0%81?oldid=134482">https://minecraft-zh.gamepedia.com/样式代码?oldid=134482</a><br>让你的motd变成中文<br><a href="http://tool.chinaz.com/tools/unicode.aspx">http://tool.chinaz.com/tools/unicode.aspx</a></p><p>例子:</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">\</span>            <span class="string">\u00A7a\u55E8\u76AE\u54B3\u55FD\u670D\u52A1\u5668</span>  <span class="string">\u00A7c[1.8-1.16]\n</span>              <span class="string">\u00A7l\u00A76\u5047\u7684\u670D\u52A1\u5668</span> <span class="string">\u00A75\u7231\u73A9\u4E0D\u73A9</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux开服教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 开服教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MC开服文档</title>
+      <link href="2020/09/17/mc%E5%BC%80%E6%9C%8D%E6%96%87%E6%A1%A3/"/>
+      <url>2020/09/17/mc%E5%BC%80%E6%9C%8D%E6%96%87%E6%A1%A3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本次教程仅限有公网ip的服务器或者电脑<br>没有端口映射教程</p><hr><p>包括Windows和Linux<br>最低配置:1h2g  宽带 &gt;= 1M(3-4人同时在线)</p><hr><p>ssh软件<a href="https://mobaxterm.mobatek.net/download.html" title="moboxterm">moboxterm</a>   /  xshell+xftp</p><p>ctrl +shift+ Insert   粘贴快捷键</p><h4 id="服务器所需软件"><a href="#服务器所需软件" class="headerlink" title="服务器所需软件"></a>服务器所需软件</h4><p>windows ：jdk（java）<br>Linux ：jdk | zip | screen </p><h1 id="mc开服教程-java版（使用Centos或者Ubuntu都可以）"><a href="#mc开服教程-java版（使用Centos或者Ubuntu都可以）" class="headerlink" title="mc开服教程 java版（使用Centos或者Ubuntu都可以）"></a>mc开服教程 java版（使用Centos或者Ubuntu都可以）</h1><h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><h2 id="Centos："><a href="#Centos：" class="headerlink" title="Centos："></a>Centos：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdk ：yum install -y java-1.8.0-openjdk</span><br><span class="line">zip ： yum install -y unzip zip screen</span><br><span class="line">screen：yum install -y screen</span><br><span class="line">zip+screen：yum install -y unzip zip screen</span><br></pre></td></tr></table></figure><hr><h2 id="Ubuntu："><a href="#Ubuntu：" class="headerlink" title="Ubuntu："></a>Ubuntu：</h2><p>首先 : </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><p>jdk（java11） ：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y default-jdk</span><br></pre></td></tr></table></figure><p>Openjdk（java8） ：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openjdk-8-jdk</span><br></pre></td></tr></table></figure><hr><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip ： sudo apt-get install -y zip screen</span><br><span class="line">screen： sudo apt-get install screen</span><br></pre></td></tr></table></figure><h2 id="服务端-核心-下载"><a href="#服务端-核心-下载" class="headerlink" title="服务端(核心)下载"></a>服务端(核心)下载</h2><p><a href="https://www.mcbbs.net/forum.php?mod=viewthread&amp;tid=823540&amp;page=1&amp;ordertype=1">https://www.mcbbs.net/forum.php?mod=viewthread&amp;tid=823540&amp;page=1&amp;ordertype=1</a><br>选择一个适合自己的服务端</p><p><del>官方原版</del><br><strong>mod服 **(推荐)<br>**插件服</strong>（paper）<br>mod&amp;插件服</p><h2 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令:"></a>启动命令:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xms4096m -Xmx4096m -jar xxxx.jar nogui</span><br></pre></td></tr></table></figure><h2 id="java版客户端"><a href="#java版客户端" class="headerlink" title="java版客户端"></a>java版客户端</h2><p>HMCL自行整合</p><hr><h2 id="服务器优化"><a href="#服务器优化" class="headerlink" title="服务器优化"></a>服务器优化</h2><p>java版<br>启动命令参数<br>以及关于服务的配置文件<br>server.properties<br>bukkit.yml<br>paper.yml<br>spigot.yml<br>如何显示一个好看(五颜六色)的motd(服务器介绍)<br>服务器图标<br>200点赞出教程</p><hr><h1 id="mc开服教程-bds版"><a href="#mc开服教程-bds版" class="headerlink" title="mc开服教程 bds版"></a>mc开服教程 bds版</h1><p><strong>系统Ubuntu</strong></p><h2 id="服务端下载"><a href="#服务端下载" class="headerlink" title="服务端下载"></a>服务端下载</h2><p><a href="https://minecraft.azureedge.net/bin-linux/bedrock-server-1.16.40.02.zip">https://minecraft.azureedge.net/bin-linux/bedrock-server-1.16.40.02.zip</a><br><a href="https://www.minecraft.net/en-us/download/server/bedrock">https://www.minecraft.net/en-us/download/server/bedrock</a></p><hr><h2 id="宝塔："><a href="#宝塔：" class="headerlink" title="宝塔："></a>宝塔：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br></pre></td></tr></table></figure><hr><h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><p>ubuntu:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw disable</span><br></pre></td></tr></table></figure><p>centos:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure><hr><h2 id="启动命令-1"><a href="#启动命令-1" class="headerlink" title="启动命令:"></a>启动命令:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LD_LIBRARY_PATH=. ./bedrock_server</span><br></pre></td></tr></table></figure><hr><p>游戏常用指令<br>基岩版显示坐标</p><pre><code>gamerule showcoordinates true</code></pre><p>死亡不掉落</p><pre><code>gamerule keepInventory true</code></pre><p>给管理</p><pre><code>op name</code></pre><p>苦力怕防爆</p><pre><code>gamerule mobGriefing false</code></pre><hr><p>手机端远程操作软件<br>juiceSSH  ssh<br>es文件管理器 ftp 》》sftp</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux开服教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 开服教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用Linux命令行测试网速</title>
+      <link href="2020/09/04/%E4%BD%BF%E7%94%A8Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%BD%91%E9%80%9F/"/>
+      <url>2020/09/04/%E4%BD%BF%E7%94%A8Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%BD%91%E9%80%9F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="使用Linux命令行测试网速"><a href="#使用Linux命令行测试网速" class="headerlink" title="使用Linux命令行测试网速"></a>使用Linux命令行测试网速</h1><p>使用Linux命令行测试网速<br>安装speedtest<br>speedtest是一个用Python编写的轻量级Linux命令行工具，在Python2.4至3.4版本下均可运行。它基于Speedtest.net的基础架构来测量网络的上/下行速率。安装speedtest很简单——只需要下载其Python脚本文件。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py</span><br><span class="line">chmod a+rx speedtest.py</span><br><span class="line">mv speedtest.py /usr/local/bin/speedtest</span><br><span class="line">chown root:root /usr/local/bin/speedtest</span><br></pre></td></tr></table></figure><p>使用speedtest测试网速<br>使用speedtest命令也很简单，它不需要任何参数即可工作。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">speedtest</span><br></pre></td></tr></table></figure><p>输入这个命令后，它会自动发现离你最近的Speedtest.net服务器（地理距离），然后打印出测试的网络上/下行速率。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 关于Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 关于Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux配置swap(虚拟内存)</title>
+      <link href="2020/08/11/Linux%E9%85%8D%E7%BD%AEswap/"/>
+      <url>2020/08/11/Linux%E9%85%8D%E7%BD%AEswap/</url>
+      
+        <content type="html"><![CDATA[<p><strong>4G内存以下的服务器建议配置SWAP（也就是虚拟内存）避免内存不足</strong></p><h3 id="设置4G的交换分区"><a href="#设置4G的交换分区" class="headerlink" title="设置4G的交换分区"></a>设置4G的交换分区</h3><p>设置多少由<strong>count</strong>的值决定</p><pre><code>dd if=/dev/zero of=/home/swap bs=1024 count=3764224</code></pre><h3 id="创建交换分区文件"><a href="#创建交换分区文件" class="headerlink" title="创建交换分区文件"></a>创建交换分区文件</h3><pre><code>mkswap /home/swap</code></pre><h3 id="启用交换分区文件"><a href="#启用交换分区文件" class="headerlink" title="启用交换分区文件"></a>启用交换分区文件</h3><pre><code>swapon /home/swap</code></pre><h3 id="设置开机启用交换分区文件"><a href="#设置开机启用交换分区文件" class="headerlink" title="设置开机启用交换分区文件"></a>设置开机启用交换分区文件</h3><p>在**/etc/fstab**中添加<br><code>home/swap swap swap defaults 0 0</code></p><h3 id="设swappiness不然阿里云，百度云默认是不会使用swap"><a href="#设swappiness不然阿里云，百度云默认是不会使用swap" class="headerlink" title="设swappiness不然阿里云，百度云默认是不会使用swap"></a>设swappiness不然阿里云，百度云默认是不会使用swap</h3><pre><code>sysctl vm.swappiness=50</code></pre><h3 id="永久调整，避免重启之后，swappiness又变成0"><a href="#永久调整，避免重启之后，swappiness又变成0" class="headerlink" title="永久调整，避免重启之后，swappiness又变成0"></a>永久调整，避免重启之后，swappiness又变成0</h3><p>在**/etc/sysctl.conf**中</p><p><code>vm.swappiness = 0</code>改成<code>vm.swappiness = 50</code></p><p>设置完成之后可输入</p><pre><code> free -h</code></pre><p>查看内存</p><h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>至此Linux配置swap完成，在Linux下搭建<strong>方舟服务器</strong>必须设置swap，否则无法启动服务端！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux开服教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 开服教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>在Linux系统下安装steamCMD</title>
+      <link href="2020/08/11/%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85steamCMD/"/>
+      <url>2020/08/11/%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85steamCMD/</url>
+      
+        <content type="html"><![CDATA[<p><strong>steam正版游戏如果想搭建服务器，需要借助steamCMD来进行，这里简单介绍一下在Linux环境下steamCMD的搭建方法</strong></p><h3 id="运行环境搭建"><a href="#运行环境搭建" class="headerlink" title="运行环境搭建"></a>运行环境搭建</h3><p>1.接下来安装32位的运行环境（如果是32 位系统可跳过）<br>乌班图下<code>sudo apt-get install lib32gcc</code> </p><p>centOS下<code>sudo yum install xulrunner.i686</code>  </p><p>或者： <code>sudo yum install ia32-libs.i686</code></p><p>2.新增用户 <code>adduser -m steam</code>   成功后将在/home目录下创建steam文件夹（用户steam专用文件夹，不是steam账号的）</p><ol start="3"><li><p>切换用户<code>steam su - steam</code> （su空格-空格steam）</p></li><li><p>创建目录 <code>mkdir ~/steamcmd</code>    目录名是“steamcmd”取个别的也行随意，这里放steamcmd的东西</p></li><li><p>进入steamcmd目录 <code>cd ~/steamcmd</code></p></li><li><p>下载steamCMD的压缩包<code>wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz</code></p></li><li><p>解压 <code>tar -xvzf steamcmd_linux.tar.gz</code></p></li><li><p>再次进入steamcmd，在里边就不用了 cd ~/steamcmd</p></li><li><p>运行脚本 <code>./steamcmd.sh</code></p></li></ol><p>10.安装完成后，进入steam命令行（steam&gt;&gt;）输入login 用户名 密码<br>（**推荐使用匿名方式登录 <code>login anonymous</code>**）</p><p>11.输入完后按回车，他要求你输入验证码，验证码会发到你的邮箱里，直接输入验证码然后回车(匿名跳过)</p><p>12.出现Logged in OK</p><p>Waiting for user info…OK</p><p>表示登录成功，接下来安装相应游戏的服务器版本即可</p><h3 id="安装游戏（服务端）"><a href="#安装游戏（服务端）" class="headerlink" title="安装游戏（服务端）"></a>安装游戏（服务端）</h3><p>13.设置游戏目录<code>force_install_dir &lt;目录&gt;</code></p><p>14.安装或者升级命令：<code>app_update</code> 游戏的steam app id (Steam Application ID ).</p><p>需要升级的话，在命令行加上升级参数: <code>validate</code> .</p><p>如果要下载一个 游戏的beta版本或者其他测试版本, 加上参数 -beta (betaname) ,</p><p>HLDS的beta版本betaname为beta ，SrcDS 的beta版本betaname为prerelease .</p><p>一些其他的测试版本可能是需要密码，你需要加入密码参数来获得下载许可 ，命令为： -betapassword (password) .</p><p>命令形式：</p><p><code>app_update (app_id) [-beta (betaname)] [-betapassword (password)] [validate]</code></p><p>HLDS是个特例:它的 App ID 一直是90 ，必须要先选择一个mod. 你只需要设置mod 的app的配置，如下：</p><p><code>app_set_config (app_id) (option_name) (option_value)</code></p><h3 id="常玩的服务端id"><a href="#常玩的服务端id" class="headerlink" title="常玩的服务端id"></a>常玩的服务端id</h3><p>比如：下载和升级Counter Strike: Global Offensive 的专用服务器:</p><p><code>app_update 740 validate</code></p><p>比如：安装和升级军团要塞HLDS with Team Fortress Classic:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app_set_config 90 mod tfc</span><br><span class="line">app_update 90 validate</span><br></pre></td></tr></table></figure><p>方舟:<code>app_update 376030</code></p><p>unturned：<code>app_update 1110390</code></p><p>啥？不知道steamapp id？？<br>试试这个网站：<a href="http://steamdb.sinaapp.com/">http://steamdb.sinaapp.com/</a><br>成功之后就可以quit退出steam了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux开服教程 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>欢迎访问&amp;博客说明</title>
+      <link href="2020/08/10/%E6%AC%A2%E8%BF%8E%E8%AE%BF%E9%97%AE/"/>
+      <url>2020/08/10/%E6%AC%A2%E8%BF%8E%E8%AE%BF%E9%97%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="新的博客"><a href="#新的博客" class="headerlink" title="新的博客"></a>新的博客</h1><p>框架：hexo 主题 butterfly<br>纯粹因为这个主题好看才用😂（说实话，搭建起来比其他博客程序麻烦多了）<br>但是，可以托管到github就很舒服</p><h1 id="我的其他网站"><a href="#我的其他网站" class="headerlink" title="我的其他网站"></a>我的其他网站</h1><div class="note blue no-icon simple"><p>旧博客地址(z-blog)：<a href="http://wehaox.ml/" title="wehaox.ml">wehaox.ml</a><br>个人网站(java web)：<a href="http://wehao.xyz/" title="wehao.xyz">wehao.xyz</a></p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 闲聊 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 闲聊 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
