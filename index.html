@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WeHao's Blog</title><meta name="author" content="wehao"><meta name="copyright" content="wehao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="文豪博客-专注分享">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WeHao&#39;s Blog">
+<meta property="og:url" content="https://blog.wehao.xyz/index.html">
+<meta property="og:site_name" content="WeHao&#39;s Blog">
+<meta property="og:description" content="文豪博客-专注分享">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.wehao.xyz/null">
+<meta property="article:author" content="wehao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.wehao.xyz/null"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog.wehao.xyz/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-24 13:59:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/css/footer.min.css"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="WeHao's Blog" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-comment-dots"></i><span> 留言板</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WeHao's Blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-comment-dots"></i><span> 留言板</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">WeHao's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/10/24/%E5%BC%80%E6%9C%8D%E8%BF%9B%E9%98%B6/" title="我的世界开服进阶教程">     <img class="post_bg" src="https://tva4.sinaimg.cn/large/007X0Rdyly1gjzr1xgiu0j30vu0jxgok.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的世界开服进阶教程"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/10/24/%E5%BC%80%E6%9C%8D%E8%BF%9B%E9%98%B6/" title="我的世界开服进阶教程">我的世界开服进阶教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-23T16:25:05.000Z" title="发表于 2020-10-24 00:25:05">2020-10-24</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Linux%E5%BC%80%E6%9C%8D%E6%95%99%E7%A8%8B/">Linux开服教程</a></span></div><div class="content">前言：作为一个Minecraft腐竹，既要保证服务器的稳定运行也要让服务器看起来有排面本次的进阶教程包括配置文件的优化外观上的美感(进服方式和motd)  &emsp;&emsp;服务器图标  &emsp;&emsp;使用域名进服  &emsp;&emsp;个性化motd本教程需要有一定的开服经验
+
+服务器优化   关于服务器优化并不能大幅改善服务器的TPS(服务器流畅度)
+关于TPS&emsp;&emsp;&emsp;&emsp; paper端可以输入指令/tps查看&emsp;&emsp;&emsp;&emsp; 20.0 =完美无瑕 - 漂亮。&emsp;&emsp;&emsp;&emsp; 19.95-19.99 =很棒 - 不明显的TPS损失。 大多数服务器都在这里。&emsp;&emsp;&emsp;&emsp; 18.5-19.94 = 一般 - 也许是一些轻微的问题，但没有任何游戏影响。&emsp;&emsp;&emsp;&emsp; 17.0-18.4 =差 - 需要认真修复。&emsp;&emsp;&emsp;&emsp; &lt; 17.0 = 无法正常游戏……
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/09/17/mc%E5%BC%80%E6%9C%8D%E6%96%87%E6%A1%A3/" title="MC开服文档">     <img class="post_bg" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3370186928,2822333981&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MC开服文档"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/17/mc%E5%BC%80%E6%9C%8D%E6%96%87%E6%A1%A3/" title="MC开服文档">MC开服文档</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-17T15:29:05.000Z" title="发表于 2020-09-17 23:29:05">2020-09-17</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Linux%E5%BC%80%E6%9C%8D%E6%95%99%E7%A8%8B/">Linux开服教程</a></span></div><div class="content">前言本次教程仅限有公网ip的服务器或者电脑没有端口映射教程
+
+包括Windows和Linux最低配置:1h2g  宽带 &gt;= 1M(3-4人同时在线)
+
+ssh软件moboxterm   /  xshell+xftp
+ctrl +shift+ Insert   粘贴快捷键
+服务器所需软件windows ：jdk（java）Linux ：jdk | zip | screen 
+mc开服教程 java版（使用Centos或者Ubuntu都可以）软件安装Centos：1234jdk ：yum install -y java-1.8.0-openjdkzip ： yum install -y unzip zip screenscreen：yum install -y screenzip+screen：yum install -y unzip zip screen
+
+
+Ubuntu：首先 : 
+1sudo apt-get update
+jdk（java11） ：
+1sudo apt-get install -y default-jdk
+Openjdk（java8） ：
+1sudo apt- ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/09/04/%E4%BD%BF%E7%94%A8Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%BD%91%E9%80%9F/" title="使用Linux命令行测试网速">     <img class="post_bg" src="https://tva1.sinaimg.cn/large/007X0Rdyly1giek2xz2lfj30dq04k3yj.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用Linux命令行测试网速"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/04/%E4%BD%BF%E7%94%A8Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%BD%91%E9%80%9F/" title="使用Linux命令行测试网速">使用Linux命令行测试网速</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-04T05:12:25.000Z" title="发表于 2020-09-04 13:12:25">2020-09-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%85%B3%E4%BA%8ELinux/">关于Linux</a></span></div><div class="content">使用Linux命令行测试网速使用Linux命令行测试网速安装speedtestspeedtest是一个用Python编写的轻量级Linux命令行工具，在Python2.4至3.4版本下均可运行。它基于Speedtest.net的基础架构来测量网络的上/下行速率。安装speedtest很简单——只需要下载其Python脚本文件。
+1234wget https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.pychmod a+rx speedtest.pymv speedtest.py /usr/local/bin/speedtestchown root:root /usr/local/bin/speedtest
+
+使用speedtest测试网速使用speedtest命令也很简单，它不需要任何参数即可工作。
+1speedtest
+输入这个命令后，它会自动发现离你最近的Speedtest.net服务器（地理距离），然后打印出测试的网络上/下行速率。
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/11/Linux%E9%85%8D%E7%BD%AEswap/" title="Linux配置swap(虚拟内存)">     <img class="post_bg" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1595251121218&amp;di=136c3ca9d080aad7f107b572aea2fe9b&amp;imgtype=0&amp;src=http%3A%2F%2Ffile.elecfans.com%2Fweb1%2FM00%2F55%2F86%2Fo4YBAFswhj-AUi_xAADrRkEqs8o018.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux配置swap(虚拟内存)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/11/Linux%E9%85%8D%E7%BD%AEswap/" title="Linux配置swap(虚拟内存)">Linux配置swap(虚拟内存)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-11T13:01:19.000Z" title="发表于 2020-08-11 21:01:19">2020-08-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Linux%E5%BC%80%E6%9C%8D%E6%95%99%E7%A8%8B/">Linux开服教程</a></span></div><div class="content">4G内存以下的服务器建议配置SWAP（也就是虚拟内存）避免内存不足
+设置4G的交换分区设置多少由count的值决定
+dd if=/dev/zero of=/home/swap bs=1024 count=3764224
+创建交换分区文件mkswap /home/swap
+启用交换分区文件swapon /home/swap
+设置开机启用交换分区文件在**/etc/fstab**中添加home/swap swap swap defaults 0 0
+设swappiness不然阿里云，百度云默认是不会使用swapsysctl vm.swappiness=50
+永久调整，避免重启之后，swappiness又变成0在**/etc/sysctl.conf**中
+vm.swappiness = 0改成vm.swappiness = 50
+设置完成之后可输入
+ free -h
+查看内存
+结束语至此Linux配置swap完成，在Linux下搭建方舟服务器必须设置swap，否则无法启动服务端！
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/11/%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85steamCMD/" title="在Linux系统下安装steamCMD">     <img class="post_bg" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1597155880143&amp;di=6443598118a75b79ed1726f2326d0827&amp;imgtype=0&amp;src=http%3A%2F%2Fwap.yesky.com%2FuploadImages%2F2015%2F046%2F24%2FE4209JL242LN.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Linux系统下安装steamCMD"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/11/%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85steamCMD/" title="在Linux系统下安装steamCMD">在Linux系统下安装steamCMD</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-11T10:46:32.000Z" title="发表于 2020-08-11 18:46:32">2020-08-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Linux%E5%BC%80%E6%9C%8D%E6%95%99%E7%A8%8B/">Linux开服教程</a></span></div><div class="content">steam正版游戏如果想搭建服务器，需要借助steamCMD来进行，这里简单介绍一下在Linux环境下steamCMD的搭建方法
+运行环境搭建1.接下来安装32位的运行环境（如果是32 位系统可跳过）乌班图下sudo apt-get install lib32gcc 
+centOS下sudo yum install xulrunner.i686  
+或者： sudo yum install ia32-libs.i686
+2.新增用户 adduser -m steam   成功后将在/home目录下创建steam文件夹（用户steam专用文件夹，不是steam账号的）
+
+切换用户steam su - steam （su空格-空格steam）
+
+创建目录 mkdir ~/steamcmd    目录名是“steamcmd”取个别的也行随意，这里放steamcmd的东西
+
+进入steamcmd目录 cd ~/steamcmd
+
+下载steamCMD的压缩包wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
+
+解 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/10/%E6%AC%A2%E8%BF%8E%E8%AE%BF%E9%97%AE/" title="欢迎访问&amp;博客说明">     <img class="post_bg" src="https://tva4.sinaimg.cn/large/007X0Rdygy1ghm2u8yvhdj30sg0g0gp1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="欢迎访问&amp;博客说明"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/10/%E6%AC%A2%E8%BF%8E%E8%AE%BF%E9%97%AE/" title="欢迎访问&amp;博客说明">欢迎访问&amp;博客说明</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack article-meta__icon sticky"></i><span class="sticky">置顶</span><span class="article-meta__separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-10T13:48:00.000Z" title="发表于 2020-08-10 21:48:00">2020-08-10</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E9%97%B2%E8%81%8A/">闲聊</a></span></div><div class="content">新的博客框架：hexo 主题 butterfly纯粹因为这个主题好看才用😂（说实话，搭建起来比其他博客程序麻烦多了）但是，可以托管到github就很舒服
+我的其他网站旧博客地址(z-blog)：wehaox.ml个人网站(java web)：wehao.xyz
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">wehao</div><div class="author-info__description">文豪博客-专注分享</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/10/24/%E5%BC%80%E6%9C%8D%E8%BF%9B%E9%98%B6/" title="我的世界开服进阶教程"><img src="https://tva4.sinaimg.cn/large/007X0Rdyly1gjzr1xgiu0j30vu0jxgok.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的世界开服进阶教程"/></a><div class="content"><a class="title" href="/2020/10/24/%E5%BC%80%E6%9C%8D%E8%BF%9B%E9%98%B6/" title="我的世界开服进阶教程">我的世界开服进阶教程</a><time datetime="2020-10-23T16:25:05.000Z" title="发表于 2020-10-24 00:25:05">2020-10-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/17/mc%E5%BC%80%E6%9C%8D%E6%96%87%E6%A1%A3/" title="MC开服文档"><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3370186928,2822333981&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MC开服文档"/></a><div class="content"><a class="title" href="/2020/09/17/mc%E5%BC%80%E6%9C%8D%E6%96%87%E6%A1%A3/" title="MC开服文档">MC开服文档</a><time datetime="2020-09-17T15:29:05.000Z" title="发表于 2020-09-17 23:29:05">2020-09-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/04/%E4%BD%BF%E7%94%A8Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%BD%91%E9%80%9F/" title="使用Linux命令行测试网速"><img src="https://tva1.sinaimg.cn/large/007X0Rdyly1giek2xz2lfj30dq04k3yj.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用Linux命令行测试网速"/></a><div class="content"><a class="title" href="/2020/09/04/%E4%BD%BF%E7%94%A8Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%BD%91%E9%80%9F/" title="使用Linux命令行测试网速">使用Linux命令行测试网速</a><time datetime="2020-09-04T05:12:25.000Z" title="发表于 2020-09-04 13:12:25">2020-09-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/08/11/Linux%E9%85%8D%E7%BD%AEswap/" title="Linux配置swap(虚拟内存)"><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1595251121218&amp;di=136c3ca9d080aad7f107b572aea2fe9b&amp;imgtype=0&amp;src=http%3A%2F%2Ffile.elecfans.com%2Fweb1%2FM00%2F55%2F86%2Fo4YBAFswhj-AUi_xAADrRkEqs8o018.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux配置swap(虚拟内存)"/></a><div class="content"><a class="title" href="/2020/08/11/Linux%E9%85%8D%E7%BD%AEswap/" title="Linux配置swap(虚拟内存)">Linux配置swap(虚拟内存)</a><time datetime="2020-08-11T13:01:19.000Z" title="发表于 2020-08-11 21:01:19">2020-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/08/11/%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85steamCMD/" title="在Linux系统下安装steamCMD"><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1597155880143&amp;di=6443598118a75b79ed1726f2326d0827&amp;imgtype=0&amp;src=http%3A%2F%2Fwap.yesky.com%2FuploadImages%2F2015%2F046%2F24%2FE4209JL242LN.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Linux系统下安装steamCMD"/></a><div class="content"><a class="title" href="/2020/08/11/%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85steamCMD/" title="在Linux系统下安装steamCMD">在Linux系统下安装steamCMD</a><time datetime="2020-08-11T10:46:32.000Z" title="发表于 2020-08-11 18:46:32">2020-08-11</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E5%BC%80%E6%9C%8D%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">Linux开服教程</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%B3%E4%BA%8ELinux/"><span class="card-category-list-name">关于Linux</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%97%B2%E8%81%8A/"><span class="card-category-list-name">闲聊</span><span class="card-category-list-count">1</span></a></li>
+            
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%85%B3%E4%BA%8ELinux/" style="font-size: 1.1em; color: #999">关于Linux</a> <a href="/tags/%E5%BC%80%E6%9C%8D%E6%95%99%E7%A8%8B/" style="font-size: 1.5em; color: #99a9bf">开服教程</a> <a href="/tags/%E9%97%B2%E8%81%8A/" style="font-size: 1.1em; color: #999">闲聊</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">3</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-10-24T05:59:15.331Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By wehao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/hideMobileSidebar.js"></script><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/hideCategory.min.js"></script></div></body></html>
