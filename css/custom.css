@@ -1,8 +1,13 @@
 :root {
     --card-bg: none!important;
 }
+#nav.fixed{
+    backdrop-filter: blur(2px);
+    background: rgba(255,255,255,0.5)!important; 
+}
 @media screen and (max-width: 900px){
     #card-toc {
         background-color: #fff!important;
+        
     }
 }
