@@ -1,3 +1,8 @@
 :root {
     --card-bg: none!important;
 }
+@media screen and (max-width: 900px){
+    #card-toc {
+        background-color: #fff!important;
+    }
+}
