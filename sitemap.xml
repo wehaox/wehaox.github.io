@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.wehao.xyz/2021/02/12/free-vps-euserv/</loc>
+    
+    <lastmod>2021-02-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.wehao.xyz/2020/09/17/mc%E5%BC%80%E6%9C%8D%E6%96%87%E6%A1%A3/</loc>
+    
+    <lastmod>2021-02-12</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.wehao.xyz/2020/08/10/%E6%AC%A2%E8%BF%8E%E8%AE%BF%E9%97%AE/</loc>
     
     <lastmod>2021-01-29</lastmod>
@@ -33,13 +47,6 @@
     <loc>https://blog.wehao.xyz/about/index.html</loc>
     
     <lastmod>2020-10-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.wehao.xyz/2020/09/17/mc%E5%BC%80%E6%9C%8D%E6%96%87%E6%A1%A3/</loc>
-    
-    <lastmod>2020-10-20</lastmod>
     
   </url>
   
@@ -88,7 +95,7 @@
 
   <url>
     <loc>https://blog.wehao.xyz/</loc>
-    <lastmod>2021-01-31</lastmod>
+    <lastmod>2021-02-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -96,21 +103,21 @@
   
   <url>
     <loc>https://blog.wehao.xyz/tags/%E5%BC%80%E6%9C%8D%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-01-31</lastmod>
+    <lastmod>2021-02-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.wehao.xyz/tags/%E5%85%B3%E4%BA%8ELinux/</loc>
-    <lastmod>2021-01-31</lastmod>
+    <lastmod>2021-02-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.wehao.xyz/tags/%E9%97%B2%E8%81%8A/</loc>
-    <lastmod>2021-01-31</lastmod>
+    <lastmod>2021-02-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -119,21 +126,21 @@
   
   <url>
     <loc>https://blog.wehao.xyz/categories/Linux%E5%BC%80%E6%9C%8D%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-01-31</lastmod>
+    <lastmod>2021-02-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.wehao.xyz/categories/%E5%85%B3%E4%BA%8ELinux/</loc>
-    <lastmod>2021-01-31</lastmod>
+    <lastmod>2021-02-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.wehao.xyz/categories/%E9%97%B2%E8%81%8A/</loc>
-    <lastmod>2021-01-31</lastmod>
+    <lastmod>2021-02-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

@@ -5,9 +5,18 @@
     backdrop-filter: blur(2px);
     background: rgba(255,255,255,0.5)!important; 
 }
+
+.iframe_video{
+    width: 800px;
+    height: 600px;
+}
 @media screen and (max-width: 900px){
     #card-toc {
         background-color: #fff!important;
         
+    }
+    .iframe_video{
+        width: 340px;
+        height: 240px;
     }
 }
